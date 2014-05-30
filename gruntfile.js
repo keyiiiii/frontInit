@@ -17,9 +17,12 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'public/devel/tmp/js/all.js': [
+            // libs
             'public/devel/js/libs/zepto/zepto.js',
+            'public/devel/js/libs/unveil/jquery.unveil.min.js',
             'public/devel/js/libs/tappivate/tappivate.js',
 
+            // app
             'public/devel/js/common.js'
           ]
         },
