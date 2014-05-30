@@ -1,0 +1,27 @@
+{
+  "name": "frontInit",
+  "version": "0.0.0",
+  "description": "frontend開発環境",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/keyiiiii/frontInit.git"
+  },
+  "author": "Itahashi kiyonobu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keyiiiii/frontInit/issues"
+  },
+  "homepage": "https://github.com/keyiiiii/frontInit",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-compass": "^0.8.0",
+    "grunt-csscomb": "^2.0.1",
+    "grunt-csso": "^0.6.1",
+    "grunt-imageoptim": "^1.4.1"
+  }
+}
