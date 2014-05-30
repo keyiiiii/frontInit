@@ -2,8 +2,7 @@
 module.exports = function(grunt) {
   'use strict';
 
-  var today               = new Date(),
-  unixTime                = today.getTime(), // UNIX時間に変換
+  var RE_USE_STRICT_STATEMENT = /(^|\n)[ \t]*'use strict';?\s*/g,
   RE_CONSOLE_METHODS      = /console\.[\w]+\(.*?(\w*\(.*\))*\);/g,
   BANNER_TEMPLATE_STRING  = '/*! <%= pkg.name %>' +
         ' ( <%= grunt.template.today("yyyy-mm-dd") %> ) - <%= pkg.license %> */';
@@ -11,13 +10,60 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    watch: {
+    /**
+     * Concatenation
+     */
+    concat: {
       dist: {
+        files: {
+          'public/devel/js/all.js': [
+            'public/devel/js/libs/zepto/zepto.js',
+            'public/devel/js/libs/tappivate/tappivate.js'
+          ]
+        },
+        options: {
+          process: function(content) {
+            return content.replace(RE_USE_STRICT_STATEMENT, '$1').replace(RE_CONSOLE_METHODS, '');
+          },
+          stripBanners: false,
+          banner: [BANNER_TEMPLATE_STRING,
+            ';(function(window) {',
+            '',
+            '"use strict";',
+            '',
+            ''].join('\n'),
+          footer: ['',
+            '})(window);'].join('\n')
+        }
+      }
+    },
+    uglify: {
+      options: {
+        report: 'min',
+        preserveComments: 'some'
+      },
+      dist: {
+        files: {
+          'public/js/all.min.js': ['public/devel/js/all.js']
+        }
+      }
+    },
+    watch: {
+      scss: {
         files:[
           'public/devel/sass/**/*.scss'
         ],
         tasks: [
           'compass', 'csscomb', 'csso'
+        ]
+      },
+      js: {
+        files:[
+          'public/**/*.html',
+          'public/devel/js/**/*.js'
+        ],
+        tasks: [
+          'concat', 'uglify'
         ]
       }
     },
@@ -75,6 +121,8 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-csscomb');
