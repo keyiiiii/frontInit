@@ -16,9 +16,11 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         files: {
-          'public/devel/js/all.js': [
+          'public/devel/tmp/js/all.js': [
             'public/devel/js/libs/zepto/zepto.js',
-            'public/devel/js/libs/tappivate/tappivate.js'
+            'public/devel/js/libs/tappivate/tappivate.js',
+
+            'public/devel/js/common.js'
           ]
         },
         options: {
@@ -44,7 +46,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'public/js/all.min.js': ['public/devel/js/all.js']
+          'public/js/all.min.js': ['public/devel/tmp/js/all.js']
         }
       }
     },

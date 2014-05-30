@@ -1781,4 +1781,8 @@ window.$ === undefined && (window.$ = Zepto)
 
 })( window.Zepto || window.jQuery, window, document );
 
+$(document).ready(function(){
+  // tapイベント
+  $('body').tappivate();
+});
 })(window);

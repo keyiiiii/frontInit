@@ -15,12 +15,6 @@
   user-select: $none;
 }
 
-// タップ時のカラー
-@mixin tap_highlight_color($r: 0, $g: 0, $b: 0, $a: 0.20) {
-  -webkit-tap-highlight-color: rgba($r,$g,$b,$a);
-  tap-highlight-color: rgba($r,$g,$b,$a);
-}
-
 // クリアフィックス（float解除）
 @mixin clearfix() {
   &:after {
