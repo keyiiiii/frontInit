@@ -65,17 +65,27 @@ module.exports = function(grunt) {
         },
         src: ['public/img/*']
       }
+    },
+    exec: {
+      start: {
+        command: 'http-server ./public & grunt watch'
+      }
     }
 
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-csso');
+  grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-imageoptim');
+
+  /**
+   * local 開発環境
+   */
+  grunt.registerTask('start', ['exec:start']);
 
 
 };
