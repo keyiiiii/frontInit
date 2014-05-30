@@ -1,0 +1,110 @@
+//-------------------------------------
+//  mixin用sass
+//-------------------------------------
+
+// ■共通
+// --------------------------------------------
+// タッチコールアウト設定
+@mixin touch_callout($none: none) {
+  -webkit-touch-callout: $none;
+  touch-callout: $none;
+}
+// テキストの選択をキャンセル
+@mixin user_select($none: none) {
+  -webkit-user-select: $none;
+  user-select: $none;
+}
+
+// タップ時のカラー
+@mixin tap_highlight_color($r: 0, $g: 0, $b: 0, $a: 0.20) {
+  -webkit-tap-highlight-color: rgba($r,$g,$b,$a);
+  tap-highlight-color: rgba($r,$g,$b,$a);
+}
+
+// クリアフィックス（float解除）
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  display:inline-block;
+  min-height:1%; ///* for IE 7*/
+
+}
+
+
+// --------------------------------------------
+//  ■アニメーションエリア
+// --------------------------------------------
+// 名前
+@mixin am_name($v: name) {
+  -webkit-animation-name: $v;
+  animation-name: $v;
+}
+
+@mixin am_timing_function($v: ease-out) {
+  -webkit-animation-timing-function: $v;
+  animation-timing-function: $v;
+}
+
+@mixin am_duration($v: 2s) {
+  -webkit-animation-duration: $v;
+  animation-duration: $v;
+}
+
+@mixin am_count($v: infinite) {
+  -webkit-animation-iteration-count: $v;
+  animation-iteration-count: $v;
+}
+
+@mixin am_direction($v: nomal) {
+  -webkit-animation-direction: $v;
+  animation-direction: $v;
+}
+
+@mixin am_fill_mode($v: forwards) {
+  -webkit-animation-fill-mode: $v;
+  animation-fill-mode: $v;
+}
+
+@mixin am_delay($v: 0.1s) {
+  -webkit-animation-delay: $v;
+  animation-delay: $v;
+}
+
+// トランスフォーム（回転）
+@mixin rotate($v: 0deg) {
+  -webkit-transform: rotate($v);
+  transform: rotate($v);
+}
+
+// 拡縮
+@mixin scale($x: 0, $x: 0) {
+  -webkit-transform: scale($x,$y);
+  transform: scale($x,$y);
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    $experimental-support-for-webkit : true; //webkit
+    $experimental-support-for-mozilla : false; //mozilla
+    $experimental-support-for-opera : false; //opera
+    $experimentl-support-for-pie : false; //pie
+    $experimental-support-for-microsoft : false; //ms
+    @content;
+  }
+  @keyframes #{$name} {
+    $experimental-support-for-webkit : true; //webkit
+    $experimental-support-for-mozilla : false; //mozilla
+    $experimental-support-for-opera : false; //opera
+    $experimentl-support-for-pie : false; //pie
+    $experimental-support-for-microsoft : false; //ms
+    @content;
+  }
+}
+

@@ -1,0 +1,51 @@
+/*
+// =================================================
+   ## ★BASE★(タグに対してのCSS)
+// =================================================
+*/
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  font-family: $set_default_family;
+  -webkit-text-size-adjust: 100%;
+}
+
+// jsでtapイベントつけるようになったら
+// * {
+//   @include tap_highlight_color(0,0,0,0);
+// }
+
+a {
+  text-decoration: none;
+}
+
+input,button {
+  @include appearance(none);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none transparent;
+}
+
+[type=text],textarea {
+  @include appearance(none);
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  box-sizing: content-box;
+}
+
+img {
+  vertical-align: top;
+}

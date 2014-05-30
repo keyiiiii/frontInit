@@ -1,0 +1,18 @@
+//-------------------------------------
+//  Main Stylesheet
+//-------------------------------------
+@import "compass";
+
+$experimental-support-for-mozilla : false; //mozilla
+$experimental-support-for-opera : false; //opera
+
+// ----- @import ----- //
+// foundation
+@import "foundation/_variables";
+@import "foundation/reset";
+@import "foundation/mixin";
+
+// layout
+
+// object
+@import "object/utility";
